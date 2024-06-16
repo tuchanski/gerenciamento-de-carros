@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 typedef struct
 {
@@ -10,6 +11,11 @@ typedef struct
 } Carro;
 
 int main(void) {
+
+    Carro carro;
+    strcpy(carro.marca, "Honda");
+
+    printf("%s\n", carro.marca);
 
     return 0;
 }
