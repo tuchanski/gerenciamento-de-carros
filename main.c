@@ -71,9 +71,9 @@ void imprimirLista(No *no)
 
 int main(void)
 {
-    FILE *fileRead = fopen("../dados/dados.txt", "r");
+    FILE *dadosArquivo = fopen("../dados/dados.txt", "r");
 
-    if (fileRead == NULL)
+    if (dadosArquivo == NULL)
     {
         printf("\nErro: não foi possível efetuar a leitura de dados.txt");
         return 1;
@@ -81,16 +81,29 @@ int main(void)
     else
     {
         No *cabeca = NULL;
+        char linha[256];
 
-        Carro car1 = {"Toyota", "Corolla", 2015, 60000, 50000.00};
-        Carro car2 = {"Honda", "Civic", 2018, 30000, 75000.00};
-        Carro car3 = {"Ford", "Focus", 2012, 90000, 35000.00};
-        Carro car4 = {"Chevrolet", "Cruze", 2020, 15000, 70000.00};
+        while (fgets(linha, sizeof(linha), dadosArquivo)){
+            
+            Carro novoCarro;
+            strcpy(novoCarro.marca, strtok(linha, "\n"));
 
-        inserirCarro(&cabeca, car1);
-        inserirCarro(&cabeca, car2);
-        inserirCarro(&cabeca, car3);
-        inserirCarro(&cabeca, car4);
+            fgets(linha, sizeof(linha), dadosArquivo);
+            strcpy(novoCarro.modelo, strtok(linha, "\n"));
+
+            fgets(linha, sizeof(linha), dadosArquivo);
+            novoCarro.anoFabricacao = atoi(strtok(linha, "\n"));
+
+            fgets(linha, sizeof(linha), dadosArquivo);
+            novoCarro.kilometragem = atoi(strtok(linha, "\n"));
+
+            fgets(linha, sizeof(linha), dadosArquivo);
+            novoCarro.preco = atof(strtok(linha, "\n"));
+
+            inserirCarro(&cabeca, novoCarro);
+        }
+
+        fclose(dadosArquivo);
 
         imprimirLista(cabeca);
 
