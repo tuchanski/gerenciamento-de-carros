@@ -58,15 +58,16 @@ void inserirCarro(No **cabeca, Carro novoCarro)
     }
 }
 
-void criarNovoCarro(No **cabeca) {
+void criarNovoCarro(No **cabeca)
+{
     Carro novoCarro;
 
     printf("\nInsira os dados do novo carro:\n");
 
     printf("Marca: ");
-    getchar(); 
+    getchar();
     fgets(novoCarro.marca, sizeof(novoCarro.marca), stdin);
-    novoCarro.marca[strcspn(novoCarro.marca, "\n")] = '\0'; 
+    novoCarro.marca[strcspn(novoCarro.marca, "\n")] = '\0';
 
     printf("Modelo: ");
     fgets(novoCarro.modelo, sizeof(novoCarro.modelo), stdin);
@@ -84,6 +85,36 @@ void criarNovoCarro(No **cabeca) {
     inserirCarro(cabeca, novoCarro);
 }
 
+void removerCarrosPorKilometragem(No **cabeca, int kilometragemMaxima)
+{
+    No *atual = *cabeca;
+    No *anterior = NULL;
+
+    while (atual != NULL)
+    {
+        if (atual->carro.kilometragem > kilometragemMaxima)
+        {
+            printf("Removendo carro com kilometragem: %d\n", atual->carro.kilometragem);
+            No *temp = atual;
+            if (anterior == NULL)
+            {
+                *cabeca = atual->proximo;
+            }
+            else
+            {
+                anterior->proximo = atual->proximo;
+            }
+            atual = atual->proximo;
+            free(temp);
+        }
+        else
+        {
+            anterior = atual;
+            atual = atual->proximo;
+        }
+    }
+}
+
 void imprimirLista(No *no)
 {
     printf("\n");
@@ -98,14 +129,16 @@ void imprimirLista(No *no)
     }
 }
 
-void imprimirListaPorMarca(No *no, char marca[LIMITE]){
-
+void imprimirListaPorMarca(No *no, char marca[LIMITE])
+{
     printf("\nCarros da marca %s:\n", marca);
     int carrosEncontrados = 0;
 
     printf("\n");
-    while (no != NULL){
-        if (strcmp(no->carro.marca, marca) == 0){
+    while (no != NULL)
+    {
+        if (strcmp(no->carro.marca, marca) == 0)
+        {
             printf("Marca: %s\n", no->carro.marca);
             printf("Modelo: %s\n", no->carro.modelo);
             printf("Ano de Fabricação: %d\n", no->carro.anoFabricacao);
@@ -116,19 +149,20 @@ void imprimirListaPorMarca(No *no, char marca[LIMITE]){
         no = no->proximo;
     }
 
-    if (carrosEncontrados == 0){
+    if (carrosEncontrados == 0)
+    {
         printf("Nenhum carro da marca %s registrado.\n", marca);
     }
-
 }
 
 // Usuário
-void menu(No **cabeca){
-
+void menu(No **cabeca)
+{
     printf("\n- Consultor | Carros -\n");
 
     int loop = 1;
-    do{
+    do
+    {
         int selecao;
         printf("\n[1] - Exibir lista completa de registros");
         printf("\n[2] - Exibir lista de registros por marca");
@@ -139,7 +173,8 @@ void menu(No **cabeca){
         printf("\n\nEscolha a sua opcao: ");
         scanf("%d", &selecao);
 
-        switch (selecao){
+        switch (selecao)
+        {
         case 1:
             imprimirLista(*cabeca);
             break;
@@ -148,7 +183,7 @@ void menu(No **cabeca){
         {
             char marca[LIMITE];
             printf("\nDigite a marca desejada: ");
-            getchar();
+            getchar(); // Consumir o '\n' deixado pelo scanf anterior
             fgets(marca, sizeof(marca), stdin);
             marca[strcspn(marca, "\n")] = '\0';
             imprimirListaPorMarca(*cabeca, marca);
@@ -160,17 +195,26 @@ void menu(No **cabeca){
             printf("\nCarro inserido com sucesso.\n");
             break;
 
+        case 5:
+        {
+            int kilometragemMaxima;
+            printf("\nDigite a kilometragem máxima: ");
+            scanf("%d", &kilometragemMaxima);
+            removerCarrosPorKilometragem(cabeca, kilometragemMaxima);
+            printf("\nCarros com kilometragem superior a %d removidos com sucesso.\n", kilometragemMaxima);
+            break;
+        }
+
         case 0:
             loop = 0;
             printf("\nPrograma encerrado com sucesso.");
             break;
-        
+
         default:
             printf("\nEscolha invalida.\n");
-            break; 
-    }
-    }
-    while (loop != 0);
+            break;
+        }
+    } while (loop != 0);
 }
 
 // Programa Principal
@@ -185,13 +229,12 @@ int main(void)
     }
     else
     {
-
         // Cria lista encadeada e atribui valores do arquivo dados.txt
         No *cabeca = NULL;
         char linha[256];
 
-        while (fgets(linha, sizeof(linha), dadosArquivo)){
-            
+        while (fgets(linha, sizeof(linha), dadosArquivo))
+        {
             Carro novoCarro;
             strcpy(novoCarro.marca, strtok(linha, "\n"));
 
