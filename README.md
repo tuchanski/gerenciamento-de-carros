@@ -30,7 +30,7 @@ Este repositório contém um programa desenvolvido como projeto bônus da discip
 
 #### Exemplo de Uso
 
-Para executar o programa, compile o código-fonte em C (`main.c`, por exemplo) e execute o arquivo compilado. Durante a execução, siga as instruções no terminal para interagir com as operações disponíveis.
+Para executar o programa, compile o código-fonte em C e execute o arquivo compilado. Durante a execução, siga as instruções no terminal para interagir com as operações disponíveis.
 
 #### Estrutura do Repositório
 
