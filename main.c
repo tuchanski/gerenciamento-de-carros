@@ -198,7 +198,7 @@ void menu(No **cabeca)
     do
     {
         int selecao;
-        printf("\n[1] - Exibir lista completa de registros");
+        printf("[1] - Exibir lista completa de registros");
         printf("\n[2] - Exibir lista de registros por marca");
         printf("\n[3] - Exibir lista de registros por preço");
         printf("\n[4] - Inserir novo registro de carro");
@@ -246,7 +246,7 @@ void menu(No **cabeca)
             printf("\nDigite a kilometragem máxima: ");
             scanf("%d", &kilometragemMaxima);
             removerCarrosPorKilometragem(cabeca, kilometragemMaxima);
-            printf("\nCarros com kilometragem superior a %d removidos com sucesso.\n", kilometragemMaxima);
+            printf("\nCarros com kilometragem superior a %d removidos com sucesso.\n\n", kilometragemMaxima);
             break;
         }
 
@@ -263,6 +263,7 @@ void menu(No **cabeca)
 }
 
 // - Programa Principal -
+
 int main(void)
 {
     FILE *dadosArquivo = fopen("../dados/dados.txt", "r");

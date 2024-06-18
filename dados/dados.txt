@@ -18,3 +18,33 @@ Focus SE 1.6
 2024
 0
 100000.00
+Chevrolet
+Onix LT
+2023
+10000
+70000.00
+Volkswagen
+Golf Comfortline
+2021
+35000
+90000.00
+Hyundai
+i30 GLS
+2022
+25000
+85000.00
+Nissan
+Altima SV
+2023
+18000
+95000.00
+BMW
+Série 3 320i
+2020
+40000
+120000.00
+Mercedes-Benz
+CLA 200 Urban
+2021
+30000
+110000.00
