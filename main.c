@@ -13,7 +13,6 @@ typedef struct Carro
     float preco;
 } Carro;
 
-
 // Operações de Lista Encadeada
 
 typedef struct No
@@ -87,6 +86,7 @@ void criarNovoCarro(No **cabeca) {
 
 void imprimirLista(No *no)
 {
+    printf("\n");
     while (no != NULL)
     {
         printf("Marca: %s\n", no->carro.marca);
@@ -98,13 +98,37 @@ void imprimirLista(No *no)
     }
 }
 
+void imprimirListaPorMarca(No *no, char marca[LIMITE]){
+
+    printf("\nCarros da marca %s:\n", marca);
+    int carrosEncontrados = 0;
+
+    printf("\n");
+    while (no != NULL){
+        if (strcmp(no->carro.marca, marca) == 0){
+            printf("Marca: %s\n", no->carro.marca);
+            printf("Modelo: %s\n", no->carro.modelo);
+            printf("Ano de Fabricação: %d\n", no->carro.anoFabricacao);
+            printf("Kilometragem: %d\n", no->carro.kilometragem);
+            printf("Preço: %.2f\n\n", no->carro.preco);
+            carrosEncontrados += 1;
+        }
+        no = no->proximo;
+    }
+
+    if (carrosEncontrados == 0){
+        printf("Nenhum carro da marca %s registrado.\n", marca);
+    }
+
+}
+
 // Usuário
-void menu(No *no){
+void menu(No **cabeca){
 
     printf("\n- Consultor | Carros -\n");
 
-    int loop = -1;
-    while (loop != 0){
+    int loop = 1;
+    do{
         int selecao;
         printf("\n[1] - Exibir lista completa de registros");
         printf("\n[2] - Exibir lista de registros por marca");
@@ -115,14 +139,24 @@ void menu(No *no){
         printf("\n\nEscolha a sua opcao: ");
         scanf("%d", &selecao);
 
-        switch (selecao)
-        {
+        switch (selecao){
         case 1:
-            imprimirLista(no);
+            imprimirLista(*cabeca);
             break;
 
+        case 2:
+        {
+            char marca[LIMITE];
+            printf("\nDigite a marca desejada: ");
+            getchar();
+            fgets(marca, sizeof(marca), stdin);
+            marca[strcspn(marca, "\n")] = '\0';
+            imprimirListaPorMarca(*cabeca, marca);
+            break;
+        }
+
         case 4:
-            criarNovoCarro(&no);
+            criarNovoCarro(cabeca);
             printf("\nCarro inserido com sucesso.\n");
             break;
 
@@ -133,11 +167,10 @@ void menu(No *no){
         
         default:
             printf("\nEscolha invalida.\n");
-            break;
-        }
-
+            break; 
     }
-
+    }
+    while (loop != 0);
 }
 
 // Programa Principal
@@ -180,7 +213,7 @@ int main(void)
         fclose(dadosArquivo);
 
         // Chama função do menu para interagir com a lista encadeada criada
-        menu(cabeca);
+        menu(&cabeca);
 
         return 0;
     }
