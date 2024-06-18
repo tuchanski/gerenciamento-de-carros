@@ -2,16 +2,19 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define TOTAL 20
+#define LIMITE 20
 
-typedef struct
+typedef struct Carro
 {
-    char marca[TOTAL];
-    char modelo[TOTAL];
+    char marca[LIMITE];
+    char modelo[LIMITE];
     int anoFabricacao;
     int kilometragem;
     float preco;
 } Carro;
+
+
+// Operações de Lista Encadeada
 
 typedef struct No
 {
@@ -56,6 +59,32 @@ void inserirCarro(No **cabeca, Carro novoCarro)
     }
 }
 
+void criarNovoCarro(No **cabeca) {
+    Carro novoCarro;
+
+    printf("\nInsira os dados do novo carro:\n");
+
+    printf("Marca: ");
+    getchar(); 
+    fgets(novoCarro.marca, sizeof(novoCarro.marca), stdin);
+    novoCarro.marca[strcspn(novoCarro.marca, "\n")] = '\0'; 
+
+    printf("Modelo: ");
+    fgets(novoCarro.modelo, sizeof(novoCarro.modelo), stdin);
+    novoCarro.modelo[strcspn(novoCarro.modelo, "\n")] = '\0';
+
+    printf("Ano de Fabricação: ");
+    scanf("%d", &novoCarro.anoFabricacao);
+
+    printf("Kilometragem: ");
+    scanf("%d", &novoCarro.kilometragem);
+
+    printf("Preço: ");
+    scanf("%f", &novoCarro.preco);
+
+    inserirCarro(cabeca, novoCarro);
+}
+
 void imprimirLista(No *no)
 {
     while (no != NULL)
@@ -69,6 +98,49 @@ void imprimirLista(No *no)
     }
 }
 
+// Usuário
+void menu(No *no){
+
+    printf("\n- Consultor | Carros -\n");
+
+    int loop = -1;
+    while (loop != 0){
+        int selecao;
+        printf("\n[1] - Exibir lista completa de registros");
+        printf("\n[2] - Exibir lista de registros por marca");
+        printf("\n[3] - Exibir lista de registros por preço");
+        printf("\n[4] - Inserir novo registro de carro");
+        printf("\n[5] - Remover registros por kilometragem");
+        printf("\n[0] - Encerrar programa");
+        printf("\n\nEscolha a sua opcao: ");
+        scanf("%d", &selecao);
+
+        switch (selecao)
+        {
+        case 1:
+            imprimirLista(no);
+            break;
+
+        case 4:
+            criarNovoCarro(&no);
+            printf("\nCarro inserido com sucesso.\n");
+            break;
+
+        case 0:
+            loop = 0;
+            printf("\nPrograma encerrado com sucesso.");
+            break;
+        
+        default:
+            printf("\nEscolha invalida.\n");
+            break;
+        }
+
+    }
+
+}
+
+// Programa Principal
 int main(void)
 {
     FILE *dadosArquivo = fopen("../dados/dados.txt", "r");
@@ -80,6 +152,8 @@ int main(void)
     }
     else
     {
+
+        // Cria lista encadeada e atribui valores do arquivo dados.txt
         No *cabeca = NULL;
         char linha[256];
 
@@ -105,7 +179,8 @@ int main(void)
 
         fclose(dadosArquivo);
 
-        imprimirLista(cabeca);
+        // Chama função do menu para interagir com a lista encadeada criada
+        menu(cabeca);
 
         return 0;
     }
