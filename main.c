@@ -21,6 +21,9 @@ typedef struct No
     struct No *proximo;
 } No;
 
+// - Funções -
+
+// Cria um nó com um carro
 No *criarNo(Carro carro)
 {
     No *novoNo = (No *)malloc(sizeof(No));
@@ -32,6 +35,7 @@ No *criarNo(Carro carro)
     return novoNo;
 }
 
+// Insere carro (registro) na Lista Encadeada ordenado por preço
 void inserirCarro(No **cabeca, Carro novoCarro)
 {
     No *novoNo = criarNo(novoCarro);
@@ -58,6 +62,7 @@ void inserirCarro(No **cabeca, Carro novoCarro)
     }
 }
 
+// Cria novo carro por prompt do usuário e o insere na Lista Encadeada
 void criarNovoCarro(No **cabeca)
 {
     Carro novoCarro;
@@ -85,6 +90,7 @@ void criarNovoCarro(No **cabeca)
     inserirCarro(cabeca, novoCarro);
 }
 
+// Remove carros acima de uma determinada kilometragem
 void removerCarrosPorKilometragem(No **cabeca, int kilometragemMaxima)
 {
     No *atual = *cabeca;
@@ -114,6 +120,7 @@ void removerCarrosPorKilometragem(No **cabeca, int kilometragemMaxima)
     }
 }
 
+// Printa todos os registros da Lista Encadeada
 void imprimirLista(No *no)
 {
     printf("\n");
@@ -128,6 +135,7 @@ void imprimirLista(No *no)
     }
 }
 
+// Printa todos os registros da Lista Encadeada filtrada por marca
 void imprimirListaPorMarca(No *no, char marca[LIMITE])
 {
     printf("\nCarros da marca %s:\n", marca);
@@ -154,6 +162,7 @@ void imprimirListaPorMarca(No *no, char marca[LIMITE])
     }
 }
 
+// Printa todos os registros da Lista Encadeada filtrado por preço mínimo e máximo
 void imprimirListaPorPreco(No *no, float precoMin, float precoMax)
 {
     printf("\nCarros na faixa de preço de [%.2f - %.2f]:\n", precoMin, precoMax);
@@ -180,7 +189,7 @@ void imprimirListaPorPreco(No *no, float precoMin, float precoMax)
     }
 }
 
-// Usuário
+// Menu da aplicação
 void menu(No **cabeca)
 {
     printf("\n- Consultor | Carros -\n");
@@ -208,7 +217,7 @@ void menu(No **cabeca)
         {
             char marca[LIMITE];
             printf("\nDigite a marca desejada: ");
-            getchar(); // Consumir o '\n' deixado pelo scanf anterior
+            getchar();
             fgets(marca, sizeof(marca), stdin);
             marca[strcspn(marca, "\n")] = '\0';
             imprimirListaPorMarca(*cabeca, marca);
@@ -253,7 +262,7 @@ void menu(No **cabeca)
     } while (loop != 0);
 }
 
-// Programa Principal
+// - Programa Principal -
 int main(void)
 {
     FILE *dadosArquivo = fopen("../dados/dados.txt", "r");
@@ -293,6 +302,13 @@ int main(void)
 
         // Chama função do menu para interagir com a lista encadeada criada
         menu(&cabeca);
+
+        // Libera memória alocada 
+        while(cabeca != NULL){
+            Carro *temp = cabeca;
+            cabeca = cabeca->proximo;
+            free(temp);
+        }
 
         return 0;
     }
