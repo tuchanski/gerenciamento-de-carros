@@ -49,9 +49,9 @@ Considerando um exemplo simplificado do arquivo `dados.txt`:
 
 A lista encadeada correspondente, mantida em ordem crescente pelo preço, seria visualizada no programa da seguinte forma:
 
-1. Toyota Yaris XLS 2020 60000 80000.00
-2. Honda HRV EX 2022 15000 95000.00
-3. Renault Sandero Stepway 2023 20000 60000.00
+1. Renault Sandero Stepway 2023 20000 60000.00
+2. Toyota Yaris XLS 2020 60000 80000.00
+3. Honda HRV EX 2022 15000 95000.00
 4. Ford Focus SE 1.6 2024 0 100000.00
 
 ### Instruções de Compilação e Execução
