@@ -94,7 +94,6 @@ void removerCarrosPorKilometragem(No **cabeca, int kilometragemMaxima)
     {
         if (atual->carro.kilometragem > kilometragemMaxima)
         {
-            printf("Removendo carro com kilometragem: %d\n", atual->carro.kilometragem);
             No *temp = atual;
             if (anterior == NULL)
             {
@@ -155,6 +154,32 @@ void imprimirListaPorMarca(No *no, char marca[LIMITE])
     }
 }
 
+void imprimirListaPorPreco(No *no, float precoMin, float precoMax)
+{
+    printf("\nCarros na faixa de preço de [%.2f - %.2f]:\n", precoMin, precoMax);
+    int carrosEncontrados = 0;
+
+    printf("\n");
+    while (no != NULL)
+    {
+        if (no->carro.preco >= precoMin && no->carro.preco <= precoMax)
+        {
+            printf("Marca: %s\n", no->carro.marca);
+            printf("Modelo: %s\n", no->carro.modelo);
+            printf("Ano de Fabricação: %d\n", no->carro.anoFabricacao);
+            printf("Kilometragem: %d\n", no->carro.kilometragem);
+            printf("Preço: %.2f\n\n", no->carro.preco);
+            carrosEncontrados += 1;
+        }
+        no = no->proximo;
+    }
+
+    if (carrosEncontrados == 0)
+    {
+        printf("Nenhum carro na faixa de preço [%.2f - %.2f] registrado.\n", precoMin, precoMax);
+    }
+}
+
 // Usuário
 void menu(No **cabeca)
 {
@@ -170,7 +195,7 @@ void menu(No **cabeca)
         printf("\n[4] - Inserir novo registro de carro");
         printf("\n[5] - Remover registros por kilometragem");
         printf("\n[0] - Encerrar programa");
-        printf("\n\nEscolha a sua opcao: ");
+        printf("\n\nEscolha a sua opção: ");
         scanf("%d", &selecao);
 
         switch (selecao)
@@ -187,6 +212,17 @@ void menu(No **cabeca)
             fgets(marca, sizeof(marca), stdin);
             marca[strcspn(marca, "\n")] = '\0';
             imprimirListaPorMarca(*cabeca, marca);
+            break;
+        }
+
+        case 3:
+        {
+            float precoMin, precoMax;
+            printf("\nDigite o preço mínimo: ");
+            scanf("%f", &precoMin);
+            printf("Digite o preço máximo: ");
+            scanf("%f", &precoMax);
+            imprimirListaPorPreco(*cabeca, precoMin, precoMax);
             break;
         }
 
