@@ -158,7 +158,7 @@ void imprimirListaPorMarca(No *no, char marca[LIMITE])
 
     if (carrosEncontrados == 0)
     {
-        printf("Nenhum carro da marca %s registrado.\n", marca);
+        printf("Nenhum carro da marca %s registrado.\n\n", marca);
     }
 }
 
