@@ -35,8 +35,7 @@ Para executar o programa, compile o código-fonte em C e execute o arquivo compi
 #### Estrutura do Repositório
 
 - **`main.c`**: Implementação do programa principal em C.
-- **`dados.txt`**: Arquivo de entrada com os registros de carros.
-- **`README.md`**: Este arquivo, fornecendo informações sobre o projeto.
+- **`../dados/dados.txt`**: Arquivo de entrada com os registros de carros.
 
 #### Exemplo de Dados e Lista Encadeada Gerada
 
