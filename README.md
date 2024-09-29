@@ -1,4 +1,4 @@
-## Projeto de Programação Imperativa - Gerenciamento de Carros
+## Gerenciamento de Carros 🚗
 
 Este repositório contém um programa desenvolvido como projeto bônus da disciplina de Programação Imperativa da PUCPR. O objetivo do programa é gerenciar uma lista encadeada de registros de carros a partir de um arquivo de entrada e permitir ao usuário realizar diversas operações sobre essa lista.
 
