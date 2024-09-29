@@ -108,4 +108,7 @@ Para executar o programa compilado:
 
 Contribuições são bem-vindas! Sinta-se à vontade para enviar sugestões e melhorias através de pull requests.
 
----
+## Autor
+
+- [Guilherme Tuchanski Rocha | GitHub](https://github.com/tuchanski)
+
