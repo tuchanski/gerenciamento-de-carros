@@ -1,8 +1,8 @@
-### Projeto de Programação Imperativa - Gerenciamento de Carros
+## Projeto de Programação Imperativa - Gerenciamento de Carros
 
 Este repositório contém um programa desenvolvido como projeto bônus da disciplina de Programação Imperativa da PUCPR. O objetivo do programa é gerenciar uma lista encadeada de registros de carros a partir de um arquivo de entrada e permitir ao usuário realizar diversas operações sobre essa lista.
 
-#### Funcionalidades do Programa
+## Funcionalidades do Programa
 
 1. **Leitura e Organização dos Dados**
 
@@ -31,16 +31,16 @@ Este repositório contém um programa desenvolvido como projeto bônus da discip
    - Utilização de memória dinamicamente alocada (heap) para a lista encadeada, com funções `malloc` e `free`.
    - O arquivo `dados.txt` contém pelo menos 10 registros de carros.
 
-#### Exemplo de Uso
+## Exemplo de Uso
 
 Para executar o programa, compile o código-fonte em C e execute o arquivo compilado. Durante a execução, siga as instruções no terminal para interagir com as operações disponíveis.
 
-#### Estrutura do Repositório
+## Estrutura do Repositório
 
 - **`main.c`**: Implementação do programa principal em C.
 - **`../dados/dados.txt`**: Arquivo de entrada com os registros de carros.
 
-#### Exemplo de Dados e Lista Encadeada Gerada
+## Exemplo de Dados e Lista Encadeada Gerada
 
 Considerando um exemplo simplificado do arquivo `dados.txt`:
 
@@ -90,7 +90,7 @@ Focus SE<br>
 0<br>
 100000.00<br>
 
-### Instruções de Compilação e Execução
+## Instruções de Compilação e Execução
 
 Para compilar o programa em C (supondo que o arquivo principal se chame `main.c` e o compilador seja `gcc`):
 
@@ -104,7 +104,7 @@ Para executar o programa compilado:
 ./programa
 ```
 
-#### Contribuições
+## Contribuições
 
 Contribuições são bem-vindas! Sinta-se à vontade para enviar sugestões e melhorias através de pull requests.
 
