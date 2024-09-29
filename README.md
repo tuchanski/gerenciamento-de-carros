@@ -5,6 +5,7 @@ Este repositório contém um programa desenvolvido como projeto bônus da discip
 #### Funcionalidades do Programa
 
 1. **Leitura e Organização dos Dados**
+
    - O programa lê os registros de carros a partir de um arquivo texto chamado `dados.txt`.
    - Cada registro de carro contém:
      - Marca
@@ -14,9 +15,11 @@ Este repositório contém um programa desenvolvido como projeto bônus da discip
      - Preço
 
 2. **Estrutura de Dados**
+
    - Os registros de carros são armazenados em uma lista encadeada em ordem crescente com base no preço dos carros.
 
 3. **Operações Disponíveis**
+
    - **Exibir a lista completa de registros:** Mostra todos os carros presentes na lista, ordenados por preço.
    - **Filtrar por marca:** Exibe todos os carros de uma marca específica fornecida pelo usuário.
    - **Filtrar por faixa de preço:** Mostra todos os carros cujo preço esteja dentro de uma faixa especificada pelo usuário.
@@ -41,17 +44,51 @@ Para executar o programa, compile o código-fonte em C e execute o arquivo compi
 
 Considerando um exemplo simplificado do arquivo `dados.txt`:
 
-1. Honda HRV EX 2022 15000 95000.00
-2. Renault Sandero Stepway 2023 20000 60000.00
-3. Toyota Yaris XLS 2020 60000 80000.00
-4. Ford Focus SE 1.6 2024 0 100000.00
+Honda
+HRV EX
+2022
+15000
+95000.00
+Renault
+Sandero Stepway
+2023
+20000
+60000.00
+Toyota
+Yaris XLS
+2020
+60000
+80000.00
+Ford
+Focus SE
+1.6
+2024
+0
+100000.00
 
 A lista encadeada correspondente, mantida em ordem crescente pelo preço, seria visualizada no programa da seguinte forma:
 
-1. Renault Sandero Stepway 2023 20000 60000.00
-2. Toyota Yaris XLS 2020 60000 80000.00
-3. Honda HRV EX 2022 15000 95000.00
-4. Ford Focus SE 1.6 2024 0 100000.00
+Renault
+Sandero Stepway
+2023
+20000
+60000.00
+Toyota
+Yaris XLS
+2020
+60000
+80000.00
+Honda
+HRV EX
+2022
+15000
+95000.00
+Ford
+Focus SE
+1.6
+2024
+0
+100000.00
 
 ### Instruções de Compilação e Execução
 
