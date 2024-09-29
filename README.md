@@ -44,51 +44,51 @@ Para executar o programa, compile o código-fonte em C e execute o arquivo compi
 
 Considerando um exemplo simplificado do arquivo `dados.txt`:
 
-Honda
-HRV EX
-2022
-15000
-95000.00
-Renault
-Sandero Stepway
-2023
-20000
-60000.00
-Toyota
-Yaris XLS
-2020
-60000
-80000.00
-Ford
-Focus SE
-1.6
-2024
-0
-100000.00
+Honda<br>
+HRV EX<br>
+2022<br>
+15000<br>
+95000.00<br>
+Renault<br>
+Sandero Stepway<br>
+2023<br>
+20000<br>
+60000.00<br>
+Toyota<br>
+Yaris XLS<br>
+2020<br>
+60000<br>
+80000.00<br>
+Ford<br>
+Focus SE<br>
+1.6<br>
+2024<br>
+0<br>
+100000.00<br>
 
 A lista encadeada correspondente, mantida em ordem crescente pelo preço, seria visualizada no programa da seguinte forma:
 
-Renault
-Sandero Stepway
-2023
-20000
-60000.00
-Toyota
-Yaris XLS
-2020
-60000
-80000.00
-Honda
-HRV EX
-2022
-15000
-95000.00
-Ford
-Focus SE
-1.6
-2024
-0
-100000.00
+Renault<br>
+Sandero Stepway<br>
+2023<br>
+20000<br>
+60000.00<br>
+Toyota<br>
+Yaris XLS<br>
+2020<br>
+60000<br>
+80000.00<br>
+Honda<br>
+HRV EX<br>
+2022<br>
+15000<br>
+95000.00<br>
+Ford<br>
+Focus SE<br>
+1.6<br>
+2024<br>
+0<br>
+100000.00<br>
 
 ### Instruções de Compilação e Execução
 
