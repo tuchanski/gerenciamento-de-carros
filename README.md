@@ -42,7 +42,7 @@ Para executar o programa, compile o código-fonte em C e execute o arquivo compi
 
 ## Exemplo de Dados e Lista Encadeada Gerada
 
-Considerando um exemplo simplificado do arquivo `dados.txt`:
+1. **Considerando um exemplo simplificado do arquivo `dados.txt`:**
 
 Honda<br>
 HRV EX<br>
@@ -66,7 +66,7 @@ Focus SE<br>
 0<br>
 100000.00<br>
 
-A lista encadeada correspondente, mantida em ordem crescente pelo preço, seria visualizada no programa da seguinte forma:
+2. **A lista encadeada correspondente, mantida em ordem crescente pelo preço, seria visualizada no programa da seguinte forma:**
 
 Renault<br>
 Sandero Stepway<br>
